@@ -23,7 +23,6 @@
     "typescript": "^5.5.3"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.6.2",
-    "sequelize-cli-typescript": "^3.2.0-c"
+    "sequelize-cli": "^6.6.2"
   }
 }
