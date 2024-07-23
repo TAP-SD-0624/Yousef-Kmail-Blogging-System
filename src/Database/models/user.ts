@@ -13,7 +13,7 @@ import {
   tableName: "users", // Specify the table name
   timestamps: true, // Set to true if you have createdAt and updatedAt columns
 })
-export class User extends Model {
+class User extends Model {
   @PrimaryKey
   @AutoIncrement
   @Column(DataType.INTEGER)
