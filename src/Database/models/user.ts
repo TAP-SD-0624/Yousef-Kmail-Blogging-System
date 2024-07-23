@@ -5,6 +5,8 @@ import {
   DataType,
   PrimaryKey,
   AutoIncrement,
+  Default,
+  AllowNull,
 } from "sequelize-typescript";
 
 @Table({
@@ -22,6 +24,11 @@ export class User extends Model {
 
   @Column(DataType.DATEONLY)
   dateOfBirth!: string;
+
+  @Default(false)
+  @AllowNull(false)
+  @Column(DataType.BOOLEAN)
+  isDeleted!: boolean;
 }
 
 export default User;
