@@ -8,12 +8,13 @@ import {
   Default,
   AllowNull,
 } from "sequelize-typescript";
+import SoftDeleteModel from "../models_Base/SoftDeleteModel";
 
 @Table({
   tableName: "users", // Specify the table name
   timestamps: true, // Set to true if you have createdAt and updatedAt columns
 })
-class User extends Model {
+class User extends SoftDeleteModel {
   @PrimaryKey
   @AutoIncrement
   @Column(DataType.INTEGER)
@@ -24,11 +25,6 @@ class User extends Model {
 
   @Column(DataType.DATEONLY)
   dateOfBirth!: string;
-
-  @Default(false)
-  @AllowNull(false)
-  @Column(DataType.BOOLEAN)
-  isDeleted!: boolean;
 }
 
 export default User;

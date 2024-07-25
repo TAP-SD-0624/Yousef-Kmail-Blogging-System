@@ -1,6 +1,4 @@
 import { Sequelize } from "sequelize-typescript";
-import Post from "./models/post";
-import Category from "./models/category";
 
 const sequelize = new Sequelize({
   database: "database",
@@ -12,8 +10,5 @@ const sequelize = new Sequelize({
 });
 
 sequelize.sync({ alter: true });
-
-Category.belongsToMany(Post, { through: "Category_Post" });
-Post.belongsToMany(Category, { through: "Category_Post" });
 
 export default sequelize;

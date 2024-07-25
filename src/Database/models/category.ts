@@ -8,6 +8,8 @@ import {
   PrimaryKey,
   Table,
 } from "sequelize-typescript";
+import Post from "./post";
+import PostCategory from "./postcategory";
 
 @Table({
   tableName: "categories",
@@ -21,7 +23,10 @@ class Category extends Model {
 
   @AllowNull(false)
   @Column(DataType.STRING)
-  category_title!: string;
+  title!: string;
+
+  @BelongsToMany(() => Post, () => PostCategory)
+  posts!: Post[];
 }
 
 export default Category;

@@ -9,15 +9,13 @@ export const GetUserById = async (req: Request, res: Response) => {
 
 export const DeleteUserById = async (req: Request, res: Response) => {
   const { id } = req.params;
-  console.log(id);
-  const user = await User.findByPk(id);
-  console.log(user);
-  if (!user || user.isDeleted) {
-    return res.status(404).json({ error: "User not found" });
+
+  try {
+    User.DeleteById(id);
+    return res.status(204).json({});
+  } catch (e) {
+    return res.status(500).json({ error: "internal server error" });
   }
-  user.isDeleted = true;
-  await user.save();
-  return res.status(204);
 };
 
 export const UpdateUserById = async (req: Request, res: Response) => {
