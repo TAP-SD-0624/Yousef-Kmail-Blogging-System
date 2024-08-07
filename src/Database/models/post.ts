@@ -6,10 +6,8 @@ import {
   BelongsToMany,
   Column,
   DataType,
-  Default,
   ForeignKey,
   HasMany,
-  Model,
   PrimaryKey,
   Table,
 } from "sequelize-typescript";

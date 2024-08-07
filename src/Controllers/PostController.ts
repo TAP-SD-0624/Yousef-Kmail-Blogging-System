@@ -57,10 +57,13 @@ export const GetBlog = async (req: Request, res: Response) => {
 
 export const CreateComment = async (req: Request, res: Response) => {
   const { content, post_id, user_id } = req.body;
+  try {
+    const comment = await Comment.create({ content, post_id, user_id });
 
-  const comment = await Comment.create({ content, post_id, user_id });
-
-  res.status(200).json({ comment });
+    res.status(200).json({ comment });
+  } catch (e: any) {
+    res.status(400).json({ error: e.message });
+  }
 };
 
 export const GetBlogs = async (req: Request, res: Response) => {
@@ -111,6 +114,6 @@ export const GetCategories = async (req: Request, res: Response) => {
 
     res.status(200).json({ categories: post ? post.categories : [] });
   } catch (e: any) {
-    res.status(200).json({});
+    res.status(400).json({ error: "post not found" });
   }
 };

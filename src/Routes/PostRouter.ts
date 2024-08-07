@@ -10,7 +10,6 @@ import {
   GetComments,
 } from "../Controllers/PostController";
 const PostRouter = Router();
-
 //#region Blogs apis
 PostRouter.post("/post", CreateNewBlog);
 

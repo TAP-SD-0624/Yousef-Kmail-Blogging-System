@@ -5,8 +5,6 @@ import {
   Column,
   DataType,
   ForeignKey,
-  HasOne,
-  Model,
   PrimaryKey,
   Table,
 } from "sequelize-typescript";

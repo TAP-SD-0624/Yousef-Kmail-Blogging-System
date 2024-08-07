@@ -10,12 +10,13 @@ import {
 } from "sequelize-typescript";
 import Post from "./post";
 import PostCategory from "./postcategory";
+import SoftDeleteModel from "../models_Base/SoftDeleteModel";
 
 @Table({
   tableName: "categories",
   timestamps: true,
 })
-class Category extends Model {
+class Category extends SoftDeleteModel {
   @PrimaryKey
   @AutoIncrement
   @Column(DataType.INTEGER)

@@ -6,7 +6,6 @@ import {
   GetUserById,
   UpdateUserById,
 } from "../Controllers/UserController";
-import { GetComments } from "../Controllers/PostController";
 
 const UserRouter = Router();
 

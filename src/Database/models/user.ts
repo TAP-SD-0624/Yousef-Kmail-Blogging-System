@@ -1,12 +1,10 @@
 import {
   Table,
   Column,
-  Model,
   DataType,
   PrimaryKey,
   AutoIncrement,
-  Default,
-  AllowNull,
+  AfterCreate,
 } from "sequelize-typescript";
 import SoftDeleteModel from "../models_Base/SoftDeleteModel";
 

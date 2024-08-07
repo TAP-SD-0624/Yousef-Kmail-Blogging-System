@@ -11,10 +11,10 @@ export const DeleteUserById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    User.DeleteById(id);
+    await User.DeleteById(id);
     return res.status(204).json({});
   } catch (e) {
-    return res.status(500).json({ error: "internal server error" });
+    return res.status(400).json({ error: "User not found" });
   }
 };
 
@@ -27,7 +27,11 @@ export const UpdateUserById = async (req: Request, res: Response) => {
 
   const user = await User.findByPk(id);
 
-  if (!user) return res.status(404).json({ error: "Not found" });
+  if (!user) {
+    const newUser = await User.create({ ...data });
+
+    return res.status(404).json(newUser);
+  }
 
   user.set({ ...data });
 

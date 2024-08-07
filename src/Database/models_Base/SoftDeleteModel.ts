@@ -27,8 +27,7 @@ class SoftDeleteModel extends Model {
     if (!item || item.isDeleted) {
       throw new NotFoundError();
     }
-    item.isDeleted = true;
-    await item.save();
+    await item.SoftDelete();
   }
 
   public static async RestoreById(id: string | number) {
@@ -39,8 +38,7 @@ class SoftDeleteModel extends Model {
     if (!item.isDeleted) {
       return;
     }
-    item.isDeleted = false;
-    await item.save();
+    await item.SoftRestore();
   }
 }
 

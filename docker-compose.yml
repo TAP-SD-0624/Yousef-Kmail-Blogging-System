@@ -1,0 +1,30 @@
+version: "3"
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+
+  app:
+    build:
+      context: .
+    environment:
+      DB: database
+      DB_PORT: 3306
+      ROOT: root
+      PASSWORD: pass
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
